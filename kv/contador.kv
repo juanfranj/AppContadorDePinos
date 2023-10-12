@@ -1,0 +1,84 @@
+<Contador>
+    orientation: "vertical"
+    spacing: "10dp"
+    padding: "10dp"
+    canvas:
+        Color:
+            rgba: 250/255, 250/255, 250/255, 0
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        size_hint: 1, 0.66
+        #pos_hint: {"x": 0, "y": 0.33}
+        spacing: 10
+
+        MDLabel:
+            #text: "0" # Valor que mostrará la etiqueta
+            #color: (.3,.8,.6,1) # Color del texto RGBA con valores del 0 al 1
+            color: (250/255,250/255,250/255,1) # Color del texto RGBA con valores del 0 al 1
+            pos_hint: {'center_x': 0.5,'center_y': 0.5} # Posición absoluta del elemento
+            halign: "center" # Alineación horizontal del contenido de la etiqueta
+            font_size: '200dp' # Tamaño de la fuente en densidad de pixeles (dp)
+            id: conteo # nombre con el que se le identificará a la etiqueta
+            md_bg_color: (187/255, 143/255, 206/255,1)
+    MDBoxLayout:
+        size_hint: 1, 0.33
+        spacing: 10
+        orientation: "horizontal"
+        
+        Button:
+            background_color: 250/255, 250/255, 250/255, 0
+            canvas:
+                Color:
+                    rgba: 130/255, 224/255, 170/255, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [40]
+            padding: "5dp", "5dp"
+            spacing: "4dp", "4dp"
+            pos_hint: {'center_x': 0.33, 'y': 0}
+            #background_color: (.3,.8,.6,1)
+            on_press: root.incrementar() # Evento al soltar el botón
+            on_release: root.on_release_sumar()
+            Image:
+                id: my_image
+                source: "./images/sumar_1.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+
+        Button:
+            background_color: 244/255, 246/255, 246/255, 0
+            canvas:
+                Color:
+                    rgba: 247/255, 220/255, 111/255, 1
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [40]
+            padding: "5dp", "5dp"
+            spacing: "4dp", "4dp"
+            pos_hint: {'center_x': 0.666, 'y': 0}
+            #background_color: (1,0,0, .8)
+            #text_color: (1,.1,.1,1) # Color del texto en el botón
+            #icon_color: (1,.1,.1,1) # Color del icono en el botón
+            on_press: root.decrementar() # Evento al presionar el botón
+            on_release: root.on_release_restar()
+            Image:
+                id: my_image_restar
+                source: "./images/restar_1.png"
+                center_x: self.parent.center_x
+                center_y: self.parent.center_y
+    
+    
+
+
+# ::: NOTA :::
+# la variable "root" hará referencia a la clase 
+# padre del componente en este caso "Contador".
+
+# En algunos casos veras también la variable "app" 
+# la cual hará referencia a la clase de la aplicación "SimpleApp".
